@@ -10,12 +10,11 @@ interface Props {
 }
 
 const Users: FC<Props> = ({ users }) => {
-  // State to manage the list of todo items
   const [userList, setUsers] = useState<userType[]>(users);
 
-  // Function to create a new todo item
-  const createTodo = (name: string, phone: string) => {
-    const id = (userList?.at(-1)?.id || 0) + 1;
+  // Function to create a new user
+  const createNewUser = (name: string, phone: string) => {
+    const id = (userList.at(-1)?.id || 0) + 1;
     addUsers(id, name, phone);
     setUsers((prev) => [...prev, { id: id, name, phone }]);
   };
@@ -28,18 +27,16 @@ const Users: FC<Props> = ({ users }) => {
     editUser(id, name, phone);
   };
 
-  // Function to delete a todo item
+  // Function to delete a user
   const deleteUsers = (id: number) => {
     setUsers((prev) => prev.filter((todo) => todo.id !== id));
     deleteUser(id);
   };
 
-  // Rendering the Todo List component
   return (
     <main className="flex mx-auto max-w-xl w-full min-h-screen flex-col items-center p-16">
       <div className="text-5xl font-medium">User Management</div>
       <div className="w-full flex flex-col mt-8 gap-2">
-        {/* Mapping through todoItems and rendering Todo component for each */}
         {userList?.map((user) => (
           <User
             key={user.id}
@@ -50,7 +47,7 @@ const Users: FC<Props> = ({ users }) => {
         ))}
       </div>
       {/* Adding Todo component for creating new todos */}
-      <AddUser createUser={createTodo} />
+      <AddUser createUser={createNewUser} />
     </main>
   );
 };
