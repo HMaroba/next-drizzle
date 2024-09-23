@@ -11,7 +11,7 @@ export async function POST(req: NextRequest) {
       name: name,
       phone: phone,
     });
-    
+
     return NextResponse.json({
       status: 201,
       user: newUser,
@@ -22,3 +22,17 @@ export async function POST(req: NextRequest) {
     });
   }
 }
+
+export async function GET() {
+    try {
+      const todos = await db.select().from(users);
+      return NextResponse.json({
+        status: 201,
+        users: todos,
+      });
+    } catch (error) {
+      return NextResponse.json({
+        message: "Server error" + error,
+      });
+    }
+  }
