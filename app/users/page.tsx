@@ -37,10 +37,10 @@ const Users: FC<Props> = ({ users }) => {
   // Rendering the Todo List component
   return (
     <main className="flex mx-auto max-w-xl w-full min-h-screen flex-col items-center p-16">
-      <div className="text-5xl font-medium">User Management app</div>
+      <div className="text-5xl font-medium">User Management</div>
       <div className="w-full flex flex-col mt-8 gap-2">
         {/* Mapping through todoItems and rendering Todo component for each */}
-        {userList.map((user) => (
+        {userList?.map((user) => (
           <User
             key={user.id}
             user={user}
