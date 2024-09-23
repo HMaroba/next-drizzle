@@ -1,7 +1,29 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+#### Drizzle Orm with NEXT JS AND POSTGRESQL
 
 ## Getting Started
 
 First, run the development server:
 
 https://orm.drizzle.team/learn/tutorials/drizzle-nextjs-neon
+
+
+## Add drizzle orm to your project
+
+npm i drizzle-orm
+npm i -D drizzle-kit
+
+
+npm i @neondatabase/serverless
+
+npm i dotenv
+
+## Run command below for migrations
+
+npx drizzle-kit generate
+
+## Run migrations command below
+
+npx drizzle-kit migrate
+
+## To push your changes to database
+npx drizzle-kit push
