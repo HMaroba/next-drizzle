@@ -69,7 +69,7 @@ const User: FC<Props> = ({ user, changeUserName, deleteUser }) => {
           onChange={handlePhoneInput}
           readOnly={!editing}
           className={`
-       outline-none read-only:border-transparent focus:border border-gray-200 rounded px-2 py-1 w-full`}
+       outline-none read-only:border-transparent focus:border border-gray-200 rounded px-2 py-1 w-full mt-2`}
         />
       </div>
       {/* Action buttons for editing, saving, canceling, and deleting */}
