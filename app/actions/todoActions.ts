@@ -37,12 +37,16 @@ export const toggleTodo = async (id: number) => {
   revalidatePath("/");
 };
 
-export const editTodo = async (id: number, text: string) => {
+export const editTodo = async (
+  id: number,
+  title: string,
+  description: string
+) => {
   await db
     .update(todo)
     .set({
-      title: text,
-      description: text,
+      title: title,
+      description: description,
     })
     .where(eq(todo.id, id));
 
