@@ -10,7 +10,7 @@ export const todo = pgTable("todo", {
 export const users = pgTable("users", {
   id: integer("id").primaryKey(),
   name: text("name").notNull(),
-  phone: numeric("phone").notNull(),
+  phone: integer("phone").notNull(),
 });
 
 export const pets = pgTable("pets", {

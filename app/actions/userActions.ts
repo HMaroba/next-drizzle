@@ -11,42 +11,33 @@ export const getUsersData = async () => {
 
 export const addUsers = async (
   id: number,
-  title: string,
-  description: string
+  name: string,
+  phone: number
 ) => {
-  await db.insert(todo).values({
+  await db.insert(users).values({
     id: id,
-    title: title,
-    description: description,
+    name: name,
+    phone: phone,
   });
 };
 
-export const deleteTodo = async (id: number) => {
-  await db.delete(todo).where(eq(todo.id, id));
+export const deleteUser = async (id: number) => {
+  await db.delete(users).where(eq(users.id, id));
   revalidatePath("/");
 };
 
-export const toggleTodo = async (id: number) => {
-  await db
-    .update(todo)
-    .set({
-      done: not(todo.done),
-    })
-    .where(eq(todo.id, id));
 
-  revalidatePath("/");
-};
 
-export const editTodo = async (
+export const editUser = async (
   id: number,
-  title: string,
-  description: string
+  name: string,
+  phone: number,
 ) => {
   await db
-    .update(todo)
+    .update(users)
     .set({
-      title: title,
-      description: description,
+      name: name,
+      phone: phone,
     })
     .where(eq(todo.id, id));
 
