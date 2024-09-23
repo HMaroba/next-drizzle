@@ -4,7 +4,7 @@ import { userType } from "../types/user.type";
 
 interface Props {
   user: userType;
-  changeUserName: (id: number, name: string, phone: number) => void;
+  changeUserName: (id: number, name: string, phone: string) => void;
   deleteUser: (id: number) => void;
 }
 
@@ -22,7 +22,7 @@ const User: FC<Props> = ({ user, changeUserName, deleteUser }) => {
   };
 
   const handlePhoneInput = (e: ChangeEvent<HTMLInputElement>) => {
-    setPhone(Number(e.target.value)); // Convert string to number
+    setPhone(e.target.value); // Convert string to number
   };
 
   // Event handler for initiating the edit mode
