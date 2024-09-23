@@ -6,11 +6,11 @@ import AddUser from "../addUser/page";
 import User from "../user/page";
 
 interface Props {
-  usersu: userType[];
+  users: userType[];
 }
 
-const Users: FC<Props> = ({ usersu }) => {
-  const [userList, setUsers] = useState<userType[]>(usersu);
+const Users: FC<Props> = ({ users }) => {
+  const [userList, setUsers] = useState<userType[]>(users);
 
   // Function to create a new user
   const createNewUser = (name: string, phone: string) => {
