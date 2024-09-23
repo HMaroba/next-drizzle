@@ -19,6 +19,7 @@ const AddTodo: FC<Props> = ({ createTodo }) => {
   const handleAdd = async () => {
     await createTodo(title, description);
     setTitle("");
+    setDescription("");
   };
 
   // Rendering the AddTodo component
