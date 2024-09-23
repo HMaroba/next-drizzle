@@ -1,10 +1,14 @@
 "use client";
 import { FC, useState } from "react";
 import { todoType } from "../types/todo.type";
-import { addTodo, deleteTodo, editTodo, toggleTodo } from "../actions/todoActions";
+import {
+  addTodo,
+  deleteTodo,
+  editTodo,
+  toggleTodo,
+} from "../actions/todoActions";
 import Todo from "../todo/page";
 import AddTodo from "../addTodo/page";
-
 
 interface Props {
   todos: todoType[];
@@ -15,10 +19,13 @@ const Todos: FC<Props> = ({ todos }) => {
   const [todoItems, setTodoItems] = useState<todoType[]>(todos);
 
   // Function to create a new todo item
-  const createTodo = (title: string,) => {
+  const createTodo = (title: string, description: string) => {
     const id = (todoItems.at(-1)?.id || 0) + 1;
-    addTodo(id, title);
-    setTodoItems((prev) => [...prev, { id: id, title, done: false }]);
+    addTodo(id, title, description);
+    setTodoItems((prev) => [
+      ...prev,
+      { id: id, title, description, done: false },
+    ]);
   };
 
   // Function to change the text of a todo item
@@ -32,7 +39,9 @@ const Todos: FC<Props> = ({ todos }) => {
   // Function to toggle the "done" status of a todo item
   const toggleIsTodoDone = (id: number) => {
     setTodoItems((prev) =>
-      prev.map((todo) => (todo.id === id ? { ...todo, done: !todo.done } : todo))
+      prev.map((todo) =>
+        todo.id === id ? { ...todo, done: !todo.done } : todo
+      )
     );
     toggleTodo(id);
   };
