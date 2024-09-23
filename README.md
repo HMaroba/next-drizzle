@@ -34,3 +34,6 @@ npm install mysql2 drizzle-orm dotenv
 ## PostgreSql with drizzle
 npm install pg drizzle-orm dotenv
 
+## Drizzle doc
+https://orm.drizzle.team/docs/rqb
+
