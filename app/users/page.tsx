@@ -14,14 +14,14 @@ const Users: FC<Props> = ({ users }) => {
   const [userList, setUsers] = useState<userType[]>(users);
 
   // Function to create a new todo item
-  const createTodo = (name: string, phone: number) => {
+  const createTodo = (name: string, phone: string) => {
     const id = (userList?.at(-1)?.id || 0) + 1;
     addUsers(id, name, phone);
     setUsers((prev) => [...prev, { id: id, name, phone }]);
   };
 
   // Function to change the user name
-  const changeTodoText = (id: number, name: string, phone: number) => {
+  const changeTodoText = (id: number, name: string, phone: string) => {
     setUsers((prev) =>
       prev.map((todo) => (todo.id === id ? { ...todo, name, phone } : todo))
     );

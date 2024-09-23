@@ -9,7 +9,7 @@ export const getUsersData = async () => {
   return data;
 };
 
-export const addUsers = async (id: number, name: string, phone: number) => {
+export const addUsers = async (id: number, name: string, phone: string) => {
   await db.insert(users).values({
     id: id,
     name: name,
@@ -22,7 +22,7 @@ export const deleteUser = async (id: number) => {
   revalidatePath("/");
 };
 
-export const editUser = async (id: number, name: string, phone: number) => {
+export const editUser = async (id: number, name: string, phone: string) => {
   await db
     .update(users)
     .set({
