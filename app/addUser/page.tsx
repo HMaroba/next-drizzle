@@ -2,27 +2,27 @@
 import { ChangeEvent, FC, useState } from "react";
 
 interface Props {
-  createUser: (name: string, phone: number) => void;
+  createUser: (name: string, phone: string) => void;
 }
 
 const AddUser: FC<Props> = ({ createUser }) => {
   // State for handling input value
   const [name, setName] = useState("");
-  const [phone, setPhone] = useState(0);
+  const [phone, setPhone] = useState("");
 
   // Event handler for input change
   const handleInput = (e: ChangeEvent<HTMLInputElement>) => {
     setName(e.target.value);
   };
   const handlePhoneInput = (e: ChangeEvent<HTMLInputElement>) => {
-    setPhone(Number(e.target.value)); // Convert string to number
+    setPhone(e.target.value);
   };
 
   // Event handler for adding a new todo
   const handleAdd = async () => {
     await createUser(name, phone);
     setName("");
-    setPhone(0);
+    setPhone("");
   };
 
   // Rendering the AddTodo component
@@ -38,7 +38,7 @@ const AddUser: FC<Props> = ({ createUser }) => {
       />
       <input
         type="number"
-        placeholder="Enter description"
+        placeholder="Enter phone number"
         className="w-full px-2 py-2 border border-gray-200 mt-2 rounded outline-none"
         onChange={handlePhoneInput}
         value={phone}
