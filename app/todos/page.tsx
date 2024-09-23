@@ -29,11 +29,11 @@ const Todos: FC<Props> = ({ todos }) => {
   };
 
   // Function to change the text of a todo item
-  const changeTodoText = (id: number, title: string) => {
+  const changeTodoText = (id: number, title: string, description: string) => {
     setTodoItems((prev) =>
       prev.map((todo) => (todo.id === id ? { ...todo, title } : todo))
     );
-    editTodo(id, title);
+    editTodo(id, title, description);
   };
 
   // Function to toggle the "done" status of a todo item

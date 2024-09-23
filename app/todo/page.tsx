@@ -4,7 +4,7 @@ import { todoType } from "../types/todo.type";
 
 interface Props {
   todo: todoType;
-  changeTodoText: (id: number, text: string) => void;
+  changeTodoText: (id: number, title: string, description: string) => void;
   toggleIsTodoDone: (id: number, done: boolean) => void;
   deleteTodoItem: (id: number) => void;
 }
@@ -19,14 +19,15 @@ const Todo: FC<Props> = ({
   const [editing, setEditing] = useState(false);
 
   // State for handling text input
-  const [text, setText] = useState(todo.title);
+  const [title, setTitle] = useState(todo.title);
+  const [description, setDescription] = useState(todo.description);
 
   // State for handling "done" status
   const [isDone, setIsDone] = useState(todo.done);
 
   // Event handler for text input change
   const handleTextChange = (e: ChangeEvent<HTMLInputElement>) => {
-    setText(e.target.value);
+    setTitle(e.target.value);
   };
 
   // Event handler for toggling "done" status
@@ -42,14 +43,15 @@ const Todo: FC<Props> = ({
 
   // Event handler for saving the edited text
   const handleSave = async () => {
-    changeTodoText(todo.id, text);
+    changeTodoText(todo.id, title, description);
     setEditing(false);
   };
 
   // Event handler for canceling the edit mode
   const handleCancel = () => {
     setEditing(false);
-    setText(todo.title);
+    setTitle(todo.title);
+    setDescription(todo.description);
   };
 
   // Event handler for deleting a todo item
@@ -72,7 +74,7 @@ const Todo: FC<Props> = ({
       {/* Input field for todo text */}
       <input
         type="text"
-        value={text}
+        value={title}
         onChange={handleTextChange}
         readOnly={!editing}
         className={`${
