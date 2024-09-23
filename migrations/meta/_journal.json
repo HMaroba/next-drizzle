@@ -8,6 +8,13 @@
       "when": 1727085839435,
       "tag": "0000_complete_jack_flag",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "7",
+      "when": 1727089089583,
+      "tag": "0001_amazing_sabra",
+      "breakpoints": true
     }
   ]
 }
