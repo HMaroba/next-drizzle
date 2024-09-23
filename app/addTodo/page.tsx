@@ -27,12 +27,14 @@ const AddTodo: FC<Props> = ({ createTodo }) => {
       {/* Input field for entering new todo text */}
       <input
         type="text"
+        placeholder="Enter title"
         className="w-full px-2 py-1 border border-gray-200 rounded outline-none"
         onChange={handleInput}
         value={title}
       />
       <input
         type="text"
+        placeholder="Enter description"
         className="w-full px-2 py-1 border border-gray-200 rounded outline-none"
         onChange={(e) => setDescription(e.target.value)}
         value={description}
