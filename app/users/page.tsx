@@ -1,8 +1,9 @@
 "use client";
 import { FC, useState } from "react";
-import { addUsers } from "../actions/userActions";
+import { addUsers , deleteUser, editUser } from "../actions/userActions";
 import { userType } from "../types/user.type";
 import AddUser from "../addUser/page";
+import User from "../user/page";
 
 interface Props {
   users: userType[];
@@ -19,19 +20,19 @@ const Users: FC<Props> = ({ users }) => {
     setUsers((prev) => [...prev, { id: id, name, phone, done: false }]);
   };
 
-  // Function to change the text of a todo item
-  //   const changeTodoText = (id: number, title: string, description: string) => {
-  //     setTodoItems((prev) =>
-  //       prev.map((todo) => (todo.id === id ? { ...todo, title } : todo))
-  //     );
-  //     editTodo(id, title, description);
-  //   };
+ // Function to change the user name
+    const changeTodoText = (id: number, name: string, phone: number) => {
+      setUsers((prev) =>
+        prev.map((todo) => (todo.id === id ? { ...todo, name, phone } : todo))
+      );
+      editUser(id, name, phone);
+    };
 
   // Function to delete a todo item
-  //   const deleteUsers = (id: number) => {
-  //     setUsers((prev) => prev.filter((todo) => todo.id !== id));
-  //     deleteUser(id);
-  //   };
+    const deleteUsers = (id: number) => {
+      setUsers((prev) => prev.filter((todo) => todo.id !== id));
+      deleteUser(id);
+    };
 
   // Rendering the Todo List component
   return (
@@ -39,15 +40,14 @@ const Users: FC<Props> = ({ users }) => {
       <div className="text-5xl font-medium">User Management app</div>
       <div className="w-full flex flex-col mt-8 gap-2">
         {/* Mapping through todoItems and rendering Todo component for each */}
-        {/* {userList.map((todo) => (
-          <Todo
-            key={todo.id}
-            todo={todo}
-            changeTodoText={changeTodoText}
-            toggleIsTodoDone={toggleIsTodoDone}
-            deleteTodoItem={deleteTodoItem}
+        {userList.map((user) => (
+          <User
+            key={user.id}
+            user={user}
+            changeUserName={changeTodoText}
+            deleteUser={deleteUsers}
           />
-        ))} */}
+        ))}
       </div>
       {/* Adding Todo component for creating new todos */}
       <AddUser createUser={createTodo} />

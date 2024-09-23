@@ -4,15 +4,11 @@ import { userType } from "../types/user.type";
 
 interface Props {
   user: userType;
-  changeUserName: (id: number, name: string, phone: string) => void;
+  changeUserName: (id: number, name: string, phone: number) => void;
   deleteUser: (id: number) => void;
 }
 
-const User: FC<Props> = ({
-  user,
-  changeUserName,
-  deleteUser,
-}) => {
+const User: FC<Props> = ({ user, changeUserName, deleteUser }) => {
   // State for handling editing mode
   const [editing, setEditing] = useState(false);
 
@@ -29,7 +25,6 @@ const User: FC<Props> = ({
     setPhone(Number(e.target.value)); // Convert string to number
   };
 
-
   // Event handler for initiating the edit mode
   const handleEdit = () => {
     setEditing(true);
@@ -44,37 +39,39 @@ const User: FC<Props> = ({
   // Event handler for canceling the edit mode
   const handleCancel = () => {
     setEditing(false);
-    setName(todo.title);
-    setPhone(todo.description);
+    setName(user.name);
+    setPhone(user.phone);
   };
 
   // Event handler for deleting a todo item
   const handleDelete = () => {
     if (confirm("Are you sure you want to delete this todo?")) {
-      deleteTodoItem(todo.id);
+      deleteUser(user.id);
     }
   };
 
   // Rendering the Todo component
   return (
     <div className="flex items-center gap-2 p-4 border-gray-200 border-solid border rounded-lg">
-      {/* Checkbox for marking the todo as done */}
-      <input
-        type="checkbox"
-        className="text-blue-200 rounded-sm h-4 w-4"
-        checked={isDone}
-        onChange={handleIsDone}
-      />
-      {/* Input field for todo text */}
-      <input
-        type="text"
-        value={title}
-        onChange={handleTextChange}
-        readOnly={!editing}
-        className={`${
-          todo.done ? "line-through" : ""
-        } outline-none read-only:border-transparent focus:border border-gray-200 rounded px-2 py-1 w-full`}
-      />
+      <div>
+        <input
+          type="text"
+          value={name}
+          onChange={handleTextChange}
+          readOnly={!editing}
+          className={`
+       outline-none read-only:border-transparent focus:border border-gray-200 rounded px-2 py-1 w-full`}
+        />
+
+        <input
+          type="text"
+          value={phone}
+          onChange={handlePhoneInput}
+          readOnly={!editing}
+          className={`
+       outline-none read-only:border-transparent focus:border border-gray-200 rounded px-2 py-1 w-full`}
+        />
+      </div>
       {/* Action buttons for editing, saving, canceling, and deleting */}
       <div className="flex gap-1 ml-auto">
         {editing ? (
