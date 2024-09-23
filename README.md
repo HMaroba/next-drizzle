@@ -27,3 +27,10 @@ npx drizzle-kit migrate
 
 ## To push your changes to database
 npx drizzle-kit push
+
+## Mysql with drizzle
+npm install mysql2 drizzle-orm dotenv
+
+## PostgreSql with drizzle
+npm install pg drizzle-orm dotenv
+

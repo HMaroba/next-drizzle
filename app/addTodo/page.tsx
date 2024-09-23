@@ -17,13 +17,13 @@ const AddTodo: FC<Props> = ({ createTodo }) => {
 
   // Event handler for adding a new todo
   const handleAdd = async () => {
-    createTodo(title, description);
+    await createTodo(title, description);
     setTitle("");
   };
 
   // Rendering the AddTodo component
   return (
-    <div className="w-full flex gap-1 mt-2">
+    <div className="w-full flex flex-col gap-1 mt-2 p-20">
       {/* Input field for entering new todo text */}
       <input
         type="text"
@@ -39,7 +39,7 @@ const AddTodo: FC<Props> = ({ createTodo }) => {
       />
       {/* Button for adding a new todo */}
       <button
-        className="flex items-center justify-center bg-green-600 text-green-50 rounded px-2 h-9 w-14 py-1"
+        className="flex items-center justify-center bg-green-600 text-green-50 rounded px-2 h-9 w-full py-1"
         onClick={handleAdd}
       >
         Add
