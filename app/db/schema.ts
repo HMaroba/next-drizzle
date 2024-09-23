@@ -1,4 +1,4 @@
-import { integer, text, boolean, pgTable, numeric } from "drizzle-orm/pg-core";
+import { integer, text, boolean, pgTable, } from "drizzle-orm/pg-core";
 
 export const todo = pgTable("todo", {
   id: integer("id").primaryKey(),
