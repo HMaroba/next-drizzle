@@ -1,6 +1,6 @@
 "use client";
 import { FC, useState } from "react";
-import { addUsers , deleteUser, editUser } from "../actions/userActions";
+import { addUsers, deleteUser, editUser } from "../actions/userActions";
 import { userType } from "../types/user.type";
 import AddUser from "../addUser/page";
 import User from "../user/page";
@@ -15,24 +15,24 @@ const Users: FC<Props> = ({ users }) => {
 
   // Function to create a new todo item
   const createTodo = (name: string, phone: number) => {
-    const id = (userList.at(-1)?.id || 0) + 1;
+    const id = (userList?.at(-1)?.id || 0) + 1;
     addUsers(id, name, phone);
-    setUsers((prev) => [...prev, { id: id, name, phone, done: false }]);
+    setUsers((prev) => [...prev, { id: id, name, phone }]);
   };
 
- // Function to change the user name
-    const changeTodoText = (id: number, name: string, phone: number) => {
-      setUsers((prev) =>
-        prev.map((todo) => (todo.id === id ? { ...todo, name, phone } : todo))
-      );
-      editUser(id, name, phone);
-    };
+  // Function to change the user name
+  const changeTodoText = (id: number, name: string, phone: number) => {
+    setUsers((prev) =>
+      prev.map((todo) => (todo.id === id ? { ...todo, name, phone } : todo))
+    );
+    editUser(id, name, phone);
+  };
 
   // Function to delete a todo item
-    const deleteUsers = (id: number) => {
-      setUsers((prev) => prev.filter((todo) => todo.id !== id));
-      deleteUser(id);
-    };
+  const deleteUsers = (id: number) => {
+    setUsers((prev) => prev.filter((todo) => todo.id !== id));
+    deleteUser(id);
+  };
 
   // Rendering the Todo List component
   return (
