@@ -24,19 +24,19 @@ const AddTodo: FC<Props> = ({ createTodo }) => {
 
   // Rendering the AddTodo component
   return (
-    <div className="w-full flex flex-col gap-1 mt-2 p-20">
+    <div className="w-full flex flex-col gap-1 mt-2">
       {/* Input field for entering new todo text */}
       <input
         type="text"
         placeholder="Enter title"
-        className="w-full px-2 py-1 border border-gray-200 rounded outline-none"
+        className="w-full px-2 py-2 border border-gray-200 rounded outline-none"
         onChange={handleInput}
         value={title}
       />
       <input
         type="text"
         placeholder="Enter description"
-        className="w-full px-2 py-1 border border-gray-200 rounded outline-none"
+        className="w-full px-2 py-2 border border-gray-200 mt-2 rounded outline-none"
         onChange={(e) => setDescription(e.target.value)}
         value={description}
       />
